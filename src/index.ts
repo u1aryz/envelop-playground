@@ -1,19 +1,24 @@
 import { createServer } from '@graphql-yoga/node'
+import {makeExecutableSchema} from "@graphql-tools/schema";
 
-const server = createServer({
-  schema: {
-    typeDefs: `
-      type Query {
-        ping: String
-      }
-    `,
-    resolvers: {
-      Query: {
-        ping: () => 'pong',
-      },
-    },
+const typeDefinitions = /* GraphQL */ `
+  type Query {
+    hello: String!
+  }
+`
+
+const resolvers = {
+  Query: {
+    hello: () => 'Hello World!',
   },
+}
+
+const schema = makeExecutableSchema({
+  resolvers: [resolvers],
+  typeDefs: [typeDefinitions],
 })
+
+const server = createServer({schema})
 
 // noinspection JSIgnoredPromiseFromCall
 server.start()
