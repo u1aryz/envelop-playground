@@ -1,5 +1,5 @@
 import { createServer } from '@graphql-yoga/node'
-import {makeExecutableSchema} from "@graphql-tools/schema";
+import { makeExecutableSchema } from '@graphql-tools/schema'
 
 const typeDefinitions = /* GraphQL */ `
   type Query {
@@ -18,7 +18,7 @@ const schema = makeExecutableSchema({
   typeDefs: [typeDefinitions],
 })
 
-const server = createServer({schema})
+const server = createServer({ schema })
 
 // noinspection JSIgnoredPromiseFromCall
 server.start()
