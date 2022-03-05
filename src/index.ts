@@ -1,11 +1,6 @@
 import { createServer, useLogger } from '@graphql-yoga/node'
 import { makeExecutableSchema } from '@graphql-tools/schema'
-
-const typeDefinitions = /* GraphQL */ `
-  type Query {
-    hello: String!
-  }
-`
+import { typeDefs } from './api/graphql/typeDefs'
 
 const resolvers = {
   Query: {
@@ -15,7 +10,7 @@ const resolvers = {
 
 const schema = makeExecutableSchema({
   resolvers: [resolvers],
-  typeDefs: [typeDefinitions],
+  typeDefs: [typeDefs],
 })
 
 const server = createServer({ schema, plugins: [useLogger()] })
