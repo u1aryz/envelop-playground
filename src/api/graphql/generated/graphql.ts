@@ -16,6 +16,7 @@ export type Scalars = {
 export type Query = {
   __typename?: 'Query';
   hello: Scalars['String'];
+  hi: Scalars['String'];
 };
 
 
@@ -99,11 +100,19 @@ export type ResolversParentTypes = {
   String: Scalars['String'];
 };
 
+export type SkipAuthDirectiveArgs = { };
+
+export type SkipAuthDirectiveResolver<Result, Parent, ContextType = any, Args = SkipAuthDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   hello?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  hi?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
   Query?: QueryResolvers<ContextType>;
 };
 
+export type DirectiveResolvers<ContextType = any> = {
+  skipAuth?: SkipAuthDirectiveResolver<any, any, ContextType>;
+};
