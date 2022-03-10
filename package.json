@@ -4,7 +4,15 @@
   "private": "true",
   "scripts": {
     "dev": "nodemon --ext ts,yaml,graphql --exec 'ts-node' src/index.ts",
-    "gql-gen": "graphql-codegen --config codegen.yml"
+    "gql-gen": "graphql-codegen --config codegen.yml",
+    "format": "eslint src --ext .js,jsx,.ts,.tsx --fix",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.6.2",
@@ -16,6 +24,8 @@
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.5",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "ts-node": "^10.6.0",
